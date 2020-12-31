@@ -24,7 +24,7 @@ public class CardEntity implements BaseEntity {
     private Long id;
 
     @Column(name="cardNo")
-    private Integer cardNo;
+    private Long cardNo;
 
     @Column(name="cardType")
     private String cardType;

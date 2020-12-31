@@ -27,6 +27,11 @@ public class CustomerEntity implements BaseEntity {
     @Column(name="name")
     private String name;
 
+    @Column(name="addressLine1")
+    private String addressLine1;
+
+    @Column(name="addressLine2")
+    private String addressLine2;
 
     @ManyToOne
     @JoinColumn(name = "countryId")
@@ -34,11 +39,11 @@ public class CustomerEntity implements BaseEntity {
 
     @ManyToOne
     @JoinColumn(name = "stateId")
-    private Countries states;
+    private States states;
 
     @ManyToOne
     @JoinColumn(name = "cityId")
-    private Countries cities;
+    private Cities cities;
 
     @Column(name="createdOn")
     private Timestamp createdOn;
