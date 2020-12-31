@@ -15,13 +15,13 @@ import java.util.Set;
 @NoArgsConstructor
 @ToString
 @Entity
-@Table(name = "users")
+@Table(name = "customers")
 public class CustomerEntity implements BaseEntity {
 
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
-    @Column(name="userId")
+    @Column(name="customerId")
     private Long id;
 
     @Column(name="name")
@@ -33,24 +33,6 @@ public class CustomerEntity implements BaseEntity {
     @Column(name="contactNo")
     private String contactNo;
 
-    @Column(name="password")
-    private String password;
-
-    @Column(name="gender")
-    private String gender;
-
-    @Column(name="dateOfBirth")
-    private String dateOfBirth;
-
-    @Column(name="address")
-    private String address;
-
-    @Column(name="profilePic")
-    private String profilePic;
-
-    @Column(name="countryCode")
-    private String countryCode;
-
     @Column(name="country")
     private String country;
 
@@ -60,11 +42,7 @@ public class CustomerEntity implements BaseEntity {
     @Column(name="city")
     private String city;
 
-    @Column(name="latitude")
-    private double latitude;
 
-    @Column(name="longitude")
-    private double longitude;
 
     @Column(name="createdOn")
     private Timestamp createdOn;
@@ -72,26 +50,18 @@ public class CustomerEntity implements BaseEntity {
     @Column(name="modifiedOn")
     private Timestamp modifiedOn;
 
-    @Column(name= "passwordCreatedOn")
-    private Timestamp passwordCreatedOn;
 
     @Column(name="isActive")
     @Type(type="org.hibernate.type.NumericBooleanType")
     private Boolean isActive;
 
-    @Column(name = "isAccountVerified")
-    @Type(type="org.hibernate.type.NumericBooleanType")
-    private Boolean  isAccountVerified;
 
-    @Column(name = "attempts")
-    private int attempts;
-
-    @ManyToMany(cascade = CascadeType.ALL,fetch = FetchType.LAZY)
+  /*  @ManyToMany(cascade = CascadeType.ALL,fetch = FetchType.LAZY)
     @JoinTable(name="users_roles",
             joinColumns={@JoinColumn(name="userId", referencedColumnName="userId")},
             inverseJoinColumns={@JoinColumn(name="roleId", referencedColumnName="roleId")})
     private Set<RolesEntity> rolesEntity;
 
     @OneToMany(mappedBy = "userEntity",fetch = FetchType.LAZY,cascade = CascadeType.ALL)
-    private Set<UserServicesEntity> userServicesEntities;
+    private Set<UserServicesEntity> userServicesEntities;*/
 }
