@@ -28,16 +28,17 @@ public class CustomerEntity implements BaseEntity {
     private String name;
 
 
-    @Column(name="country")
-    private String country;
+    @ManyToOne
+    @JoinColumn(name = "countryId")
+    private Countries countries;
 
-    @Column(name="state")
-    private String state;
+    @ManyToOne
+    @JoinColumn(name = "stateId")
+    private Countries states;
 
-    @Column(name="city")
-    private String city;
-
-
+    @ManyToOne
+    @JoinColumn(name = "cityId")
+    private Countries cities;
 
     @Column(name="createdOn")
     private Timestamp createdOn;
@@ -45,18 +46,11 @@ public class CustomerEntity implements BaseEntity {
     @Column(name="modifiedOn")
     private Timestamp modifiedOn;
 
-
     @Column(name="isActive")
     @Type(type="org.hibernate.type.NumericBooleanType")
     private Boolean isActive;
 
+    @OneToMany(mappedBy = "customers",fetch = FetchType.LAZY,cascade = CascadeType.ALL)
+    private Set<CardEntity> cards;
 
-  /*  @ManyToMany(cascade = CascadeType.ALL,fetch = FetchType.LAZY)
-    @JoinTable(name="users_roles",
-            joinColumns={@JoinColumn(name="userId", referencedColumnName="userId")},
-            inverseJoinColumns={@JoinColumn(name="roleId", referencedColumnName="roleId")})
-    private Set<RolesEntity> rolesEntity;
-
-    @OneToMany(mappedBy = "userEntity",fetch = FetchType.LAZY,cascade = CascadeType.ALL)
-    private Set<UserServicesEntity> userServicesEntities;*/
 }

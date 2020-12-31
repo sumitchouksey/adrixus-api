@@ -23,24 +23,17 @@ public class CardEntity implements BaseEntity {
     @Column(name="cardId")
     private Long id;
 
-    @Column(name="name")
-    private String name;
+    @Column(name="cardNo")
+    private Integer cardNo;
 
-    @Column(name="email")
-    private String email;
+    @Column(name="cardType")
+    private String cardType;
 
-    @Column(name="contactNo")
-    private String contactNo;
+    @Column(name="cvc")
+    private Short cvc;
 
-    @Column(name="country")
-    private String country;
-
-    @Column(name="state")
-    private String state;
-
-    @Column(name="city")
-    private String city;
-
+    @Column(name="password")
+    private Short password;
 
 
     @Column(name="createdOn")
@@ -50,17 +43,12 @@ public class CardEntity implements BaseEntity {
     private Timestamp modifiedOn;
 
 
-    @Column(name="isActive")
+    @Column(name="active")
     @Type(type="org.hibernate.type.NumericBooleanType")
     private Boolean isActive;
 
 
-  /*  @ManyToMany(cascade = CascadeType.ALL,fetch = FetchType.LAZY)
-    @JoinTable(name="users_roles",
-            joinColumns={@JoinColumn(name="userId", referencedColumnName="userId")},
-            inverseJoinColumns={@JoinColumn(name="roleId", referencedColumnName="roleId")})
-    private Set<RolesEntity> rolesEntity;
-
-    @OneToMany(mappedBy = "userEntity",fetch = FetchType.LAZY,cascade = CascadeType.ALL)
-    private Set<UserServicesEntity> userServicesEntities;*/
+    @ManyToOne
+    @JoinColumn(name = "customerId")
+    private CustomerEntity customers;
 }
