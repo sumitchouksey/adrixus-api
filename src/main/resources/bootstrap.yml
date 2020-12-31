@@ -1,0 +1,4 @@
+spring:
+  cloud:
+    config:
+      uri: http://178.128.127.231:3422

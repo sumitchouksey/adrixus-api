@@ -1,0 +1,11 @@
+# -- BASIC CONFIGURATION -- #
+spring:
+  application:
+    name: adrixus-api
+  jmx:
+    default-domain: ${spring.application.name}
+server:
+  compression:
+    enabled: true
+    min-response-size: 5024
+  port: 3423
