@@ -6,6 +6,7 @@ import org.hibernate.annotations.Type;
 
 import javax.persistence.*;
 import java.sql.Timestamp;
+import java.util.Set;
 
 @Setter
 @Getter
@@ -52,5 +53,8 @@ public class Countries implements BaseEntity {
     @Column(name="isActive")
     @Type(type="org.hibernate.type.NumericBooleanType")
     private Boolean isActive;
+
+    @OneToMany(mappedBy = "countries",fetch = FetchType.LAZY,cascade = CascadeType.ALL)
+    private Set<States> states;
 
 }

@@ -112,15 +112,15 @@
                 <artifactId>spring-boot-maven-plugin</artifactId>
                 <configuration>
                     <executable>true</executable>
-                    <sources>
+                   <!-- <sources>
                         <source>target/generated-sources/annotations</source>
                     </sources>
                     <compilerArguments>
-                        <!--Two Processor Configuration
+                        &lt;!&ndash;Two Processor Configuration
                         1. Lombok
-                        2. Hibernate Annotation Process-->
+                        2. Hibernate Annotation Process&ndash;&gt;
                         <processor>org.hibernate.jpamodelgen.JPAMetaModelEntityProcessor,lombok.launch.AnnotationProcessorHider$AnnotationProcessor</processor>
-                    </compilerArguments>
+                    </compilerArguments>-->
                 </configuration>
 
             </plugin>

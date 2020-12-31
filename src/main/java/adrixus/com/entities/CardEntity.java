@@ -6,7 +6,6 @@ import org.hibernate.annotations.Type;
 
 import javax.persistence.*;
 import java.sql.Timestamp;
-import java.util.Set;
 
 
 @Setter
@@ -15,18 +14,23 @@ import java.util.Set;
 @NoArgsConstructor
 @ToString
 @Entity
-@Table(name = "customers")
-public class CustomerEntity implements BaseEntity {
+@Table(name = "cards")
+public class CardEntity implements BaseEntity {
 
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
-    @Column(name="customerId")
+    @Column(name="cardId")
     private Long id;
 
     @Column(name="name")
     private String name;
 
+    @Column(name="email")
+    private String email;
+
+    @Column(name="contactNo")
+    private String contactNo;
 
     @Column(name="country")
     private String country;

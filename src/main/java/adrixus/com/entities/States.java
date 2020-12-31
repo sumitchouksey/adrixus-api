@@ -7,6 +7,7 @@ import org.hibernate.annotations.Type;
 
 import javax.persistence.*;
 import java.sql.Timestamp;
+import java.util.Set;
 
 @Setter
 @Getter
@@ -44,6 +45,11 @@ public class States implements BaseEntity {
     @Type(type="org.hibernate.type.NumericBooleanType")
     private Boolean isActive;
 
-    @Column(name = "countryId")
-    private Long countryId;
+
+    @ManyToOne
+    @JoinColumn(name = "countryId")
+    private Countries countries;
+
+    @OneToMany(mappedBy = "states",fetch = FetchType.LAZY,cascade = CascadeType.ALL)
+    private Set<Cities> cities;
 }

@@ -24,9 +24,6 @@ public class Cities implements BaseEntity {
     @Column(name="name")
     private String name;
 
-    @Column(name = "stateId")
-    private Long stateId;
-
     @Column(name = "stateCode")
     private String stateCode;
 
@@ -55,5 +52,9 @@ public class Cities implements BaseEntity {
     @Column(name="isActive")
     @Type(type="org.hibernate.type.NumericBooleanType")
     private Boolean isActive;
+
+    @ManyToOne
+    @JoinColumn(name = "stateId")
+    private States states;
 
 }

@@ -20,6 +20,10 @@ public class CoreApiRepository extends HibernateRepository {
     private EntityManager entityManager;
 
 
+    /**
+     * Get Country Tables Data
+     * @return
+     */
     public List<Countries> getCountries(){
         CriteriaBuilder criteriaBuilder  = entityManager.getCriteriaBuilder();
         CriteriaQuery<Countries> countriesCriteriaQuery= criteriaBuilder.createQuery(Countries.class);
@@ -29,6 +33,10 @@ public class CoreApiRepository extends HibernateRepository {
                 .getResultList();
     }
 
+    /**
+     * Get State Table Data
+     * @return
+     */
     public List<States> getStates(Long countryId){
         CriteriaBuilder criteriaBuilder  = entityManager.getCriteriaBuilder();
         CriteriaQuery<States> statesCriteriaQuery= criteriaBuilder.createQuery(States.class);
@@ -36,7 +44,7 @@ public class CoreApiRepository extends HibernateRepository {
         statesCriteriaQuery.select(statesRoot).distinct(true);
         statesCriteriaQuery
                 .where(
-                        criteriaBuilder.equal(statesRoot.get(States_.countryId),countryId),
+                        criteriaBuilder.equal(statesRoot.get(States_.countries),countryId),
                         criteriaBuilder.equal(statesRoot.get(States_.isActive),true)
                 );
         return  entityManager.createQuery( statesCriteriaQuery )
@@ -44,6 +52,10 @@ public class CoreApiRepository extends HibernateRepository {
 
     }
 
+    /**
+     * Get City Table Data
+     * @return
+     */
     public List<Cities> getCities(Long stateId){
         CriteriaBuilder criteriaBuilder  = entityManager.getCriteriaBuilder();
         CriteriaQuery<Cities> statesCriteriaQuery= criteriaBuilder.createQuery(Cities.class);
@@ -51,7 +63,7 @@ public class CoreApiRepository extends HibernateRepository {
         statesCriteriaQuery.select(statesRoot).distinct(true);
         statesCriteriaQuery
                 .where(
-                        criteriaBuilder.equal(statesRoot.get(Cities_.stateId),stateId),
+                        criteriaBuilder.equal(statesRoot.get(Cities_.states),stateId),
                         criteriaBuilder.equal(statesRoot.get(Cities_.isActive),true)
                 );
         return  entityManager.createQuery( statesCriteriaQuery )
