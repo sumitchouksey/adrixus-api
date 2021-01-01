@@ -33,16 +33,16 @@ public class CustomerApiController {
 
         Long countryId  = requestJsonHandler.getLongValue("countryId");
         if(countryId==null)
-            return ResponseJsonUtil.getResponse("Please provide countryId",400,"Bad Request",true);
+            return ResponseJsonUtil.getResponse("Please provide country",400,"Bad Request",true);
 
         Long stateId  = requestJsonHandler.getLongValue("stateId");
         if(stateId==null)
-            return ResponseJsonUtil.getResponse("Please provide stateId",400,"Bad Request",true);
+            return ResponseJsonUtil.getResponse("Please provide state",400,"Bad Request",true);
 
 
         Long cityId  = requestJsonHandler.getLongValue("cityId");
         if(cityId==null)
-            return ResponseJsonUtil.getResponse("Please provide cityId",400,"Bad Request",true);
+            return ResponseJsonUtil.getResponse("Please provide city",400,"Bad Request",true);
 
         return  customerApiService.addCustomer(name.trim(),addressLine1,addressLine2,countryId,stateId,cityId);
     }

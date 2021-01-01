@@ -42,7 +42,7 @@ public class CardApiController {
 
         Short cvc  = requestJsonHandler.getShortValue("cvc");
         if(cvc==null)
-            return ResponseJsonUtil.getResponse("Please provide cvc",400,"Bad Request",true);
+            return ResponseJsonUtil.getResponse("Please provide cvv",400,"Bad Request",true);
 
 
         Short password  = requestJsonHandler.getShortValue("password");
