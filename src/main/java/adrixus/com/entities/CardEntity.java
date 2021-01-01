@@ -1,5 +1,6 @@
 package adrixus.com.entities;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.nidavellir.book.entities.hibernate.BaseEntity;
 import lombok.*;
 import org.hibernate.annotations.Type;
@@ -50,5 +51,6 @@ public class CardEntity implements BaseEntity {
 
     @ManyToOne
     @JoinColumn(name = "customerId")
+    @JsonBackReference
     private CustomerEntity customers;
 }

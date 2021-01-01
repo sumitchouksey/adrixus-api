@@ -1,6 +1,7 @@
 package adrixus.com.entities;
 
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.nidavellir.book.entities.hibernate.BaseEntity;
 import lombok.*;
 import org.hibernate.annotations.Type;
@@ -48,8 +49,10 @@ public class States implements BaseEntity {
 
     @ManyToOne
     @JoinColumn(name = "countryId")
+    @JsonBackReference
     private Countries countries;
 
     @OneToMany(mappedBy = "states",fetch = FetchType.LAZY,cascade = CascadeType.ALL)
+    @JsonBackReference
     private Set<Cities> cities;
 }

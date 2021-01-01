@@ -1,5 +1,6 @@
 package adrixus.com.entities;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.nidavellir.book.entities.hibernate.BaseEntity;
 import lombok.*;
 import org.hibernate.annotations.Type;
@@ -55,6 +56,7 @@ public class Cities implements BaseEntity {
 
     @ManyToOne
     @JoinColumn(name = "stateId")
+    @JsonBackReference
     private States states;
 
 }

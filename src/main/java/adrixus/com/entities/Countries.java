@@ -1,5 +1,6 @@
 package adrixus.com.entities;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.nidavellir.book.entities.hibernate.BaseEntity;
 import lombok.*;
 import org.hibernate.annotations.Type;
@@ -55,6 +56,7 @@ public class Countries implements BaseEntity {
     private Boolean isActive;
 
     @OneToMany(mappedBy = "countries",fetch = FetchType.LAZY,cascade = CascadeType.ALL)
+    @JsonBackReference
     private Set<States> states;
 
 }

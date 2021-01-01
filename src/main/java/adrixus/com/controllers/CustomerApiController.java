@@ -7,10 +7,7 @@ import com.nidavellir.book.response.json.handler.ResponseJsonHandler;
 import com.nidavellir.book.response.json.handler.util.ResponseJsonUtil;
 import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/customer")
@@ -48,5 +45,17 @@ public class CustomerApiController {
             return ResponseJsonUtil.getResponse("Please provide cityId",400,"Bad Request",true);
 
         return  customerApiService.addCustomer(name.trim(),addressLine1,addressLine2,countryId,stateId,cityId);
+    }
+
+    @PostMapping("/get-customers")
+    public ResponseJsonHandler getCustomers(@RequestBody RequestJsonHandler requestJsonHandler){
+        Integer index  = requestJsonHandler.getIntegerValue("index");
+        if(index==null)
+            return ResponseJsonUtil.getResponse("Please provide index",400,"Bad Request",true);
+
+        Integer itemsPerIndex  = requestJsonHandler.getIntegerValue("itemsPerIndex");
+        if(itemsPerIndex==null)
+            return ResponseJsonUtil.getResponse("Please provide itemsPerIndex",400,"Bad Request",true);
+        return customerApiService.getCustomers(index,itemsPerIndex);
     }
 }
