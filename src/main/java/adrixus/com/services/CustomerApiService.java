@@ -23,6 +23,8 @@ import java.util.List;
 @Transactional
 public class CustomerApiService {
 
+    /** Autowiring repository layers **/
+
     @Autowired
     private ObjectMapper objectMapper;
 
@@ -30,6 +32,16 @@ public class CustomerApiService {
     private CustomerApiRepository customerApiRepository;
 
 
+    /**
+     * Add new  customer to database
+     * @param name  name of customer
+     * @param addressLine1  addressLine1 of customer  ,option
+     * @param addressLine2 addressLine1 of customer  , option
+     * @param countryId selected country by user as countryId
+     * @param stateId selected state by user as stateId
+     * @param cityId selected city by user as cityId
+     * @return On success return customerId
+     */
     public ResponseJsonHandler addCustomer(String name,String addressLine1,String addressLine2 , Long countryId,Long stateId,Long cityId){
         CustomerEntity customerEntity  = new CustomerEntity();
 
@@ -52,6 +64,12 @@ public class CustomerApiService {
         );
     }
 
+    /**
+     * Return all customer and their card details
+     * @param index - page index must start from 0
+     * @param itemsPerIndex number of items to be fetched per page
+     * @return Return empty array if no record exists else return customer and their card details
+     */
     public ResponseJsonHandler getCustomers(int index,int itemsPerIndex){
         ArrayNode data  = objectMapper.createArrayNode();
         List<CustomerEntity> customerEntities  = customerApiRepository.getCustomers(index,itemsPerIndex);

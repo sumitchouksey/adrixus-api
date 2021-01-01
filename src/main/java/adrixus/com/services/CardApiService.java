@@ -16,12 +16,23 @@ import org.springframework.transaction.annotation.Transactional;
 @Transactional
 public class CardApiService {
 
+    /** Autowiring repository layers **/
+
     @Autowired
     private ObjectMapper objectMapper;
 
     @Autowired
     private CardApiRepository cardApiRepository;
 
+    /**
+     * Add new card or assign to customer
+     * @param cardNo card number must be 16 digit must be long
+     * @param cardType card type must be string example visa master
+     * @param cvv a cvv number of card
+     * @param password card ping or password
+     * @param customerId the customerId to which card need to be assigned
+     * @return On success return cardId
+     */
     public ResponseJsonHandler addCard(Long cardNo,String cardType,Short cvv,Short password , Long customerId){
         CardEntity cardEntity  = new CardEntity();
 

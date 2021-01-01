@@ -16,12 +16,13 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/cards")
 public class CardApiController {
 
+    /** Initialize Card Api Service Instance **/
     @Autowired
     private CardApiService cardApiService;
 
 
     /**
-     * Add New Card to Customer
+     * Add New Card to Customer , Handle validation Also
      * @param requestJsonHandler
      * @return
      */

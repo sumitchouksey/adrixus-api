@@ -20,6 +20,7 @@ import java.util.List;
 @Transactional
 public class CoreApiService {
 
+    /** Autowiring repository layers **/
 
     @Autowired
     private ObjectMapper objectMapper;

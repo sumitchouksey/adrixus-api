@@ -28,6 +28,7 @@ public class CoreApiController {
 
     /**
      * Api end point to return all states of provided country
+     * Handle validation Also
      * @return
      */
     @PostMapping("/get-states")
@@ -41,6 +42,7 @@ public class CoreApiController {
     }
     /**
      * Api end point to return all cities of provided states
+     * Handle validation Also
      * @return
      */
     @PostMapping("/get-cities")

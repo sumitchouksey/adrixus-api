@@ -13,11 +13,13 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/customer")
 public class CustomerApiController {
 
+    /** Initialize Customers Api Service Instance **/
     @Autowired
     private CustomerApiService customerApiService;
 
     /**
-     * Add New Customers
+     * Add New Customers,
+     * Handle validation Also
      * @param requestJsonHandler
      * @return
      */
@@ -47,6 +49,12 @@ public class CustomerApiController {
         return  customerApiService.addCustomer(name.trim(),addressLine1,addressLine2,countryId,stateId,cityId);
     }
 
+    /**
+     * Get customer and their cards details in paginated mode
+     * Also handle validation of page index input
+     * @param requestJsonHandler
+     * @return
+     */
     @PostMapping("/get-customers")
     public ResponseJsonHandler getCustomers(@RequestBody RequestJsonHandler requestJsonHandler){
         Integer index  = requestJsonHandler.getIntegerValue("index");
